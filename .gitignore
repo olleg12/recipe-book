@@ -9,10 +9,10 @@ logs/*
 src/main/webapp/node_modules/*
 WebContent/*
 web/*
-
-**/webapp/components/**/*.js.map
-**/webapp/components/**/*.js
-
+**
+**/webapp/recipe-book/**/*.js.map
+**/webapp/recipe-book/**/*.js
+**/gradle/wrapper
 *.iml
 *.ipr
 *.iws
