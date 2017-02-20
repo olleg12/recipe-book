@@ -42,16 +42,16 @@ public class HibernateConfiguration {
     }
 
     @Bean
-    DataSource dataSource(){
+     DataSource dataSource(){
         DriverManagerDataSource dataSource= new DriverManagerDataSource();
-        dataSource.setDriverClassName("jdbc.driverClassName");
-        dataSource.setUrl(environment.getProperty("jdbc.url"));
-        dataSource.setUsername(environment.getProperty("jdbc.username"));
+        dataSource.setDriverClassName(environment.getProperty("jdbc.driverClassName"));
+        dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+        dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
         dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
         return dataSource;
     }
 
-    private Properties getHibernateProperties(){
+     Properties getHibernateProperties(){
         Properties properties=new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
@@ -60,7 +60,7 @@ public class HibernateConfiguration {
 
     @Bean
     @Autowired
-    public HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
+     HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
         return txManager;

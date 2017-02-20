@@ -4,15 +4,21 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'war'
 
-sourceCompatibility = 1.5
+
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url "https://clojars.org/repo" }
 }
+
+
 
 ext.vers = [
         logback: '1.1.7',
-        spring : '4.3.5.RELEASE'
+        spring : '4.3.5.RELEASE',
+        servlet: '3.1.0',
+        postgresql : '9.3-1102.jdbc41'
 ]
 
 
@@ -28,8 +34,17 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.1.RELEASE'
 // https://mvnrepository.com/artifact/org.springframework.security/spring-security-config
     compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.1.RELEASE'
-// https://mvnrepository.com/artifact/org.springframework/spring-tx
     compile group: 'org.springframework', name: 'spring-tx', version: '4.3.6.RELEASE'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: vers.logback
     compile group: 'org.springframework', name: 'spring-orm', version: vers.spring
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: vers.servlet
+
+    compile group: 'postgresql', name: 'postgresql', version: '9.3-1102.jdbc41'
+
+
+
+}
+
+war {
+    archiveName = 'recipe-book.war'
 }

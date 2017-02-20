@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "recipe")
 public class RecipeController {
 //    @RequestMapping(value = "/add",method = RequestMethod.GET,produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-//    private ResponseEntity<Recipe> addRecipe(){
+//    private ResponseEntity<RecipeService> addRecipe(){
 //
 //    }
 }
