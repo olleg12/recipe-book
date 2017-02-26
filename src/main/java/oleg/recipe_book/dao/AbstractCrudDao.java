@@ -9,7 +9,7 @@ public class AbstractCrudDao<E> implements CrudDao<E> {
     @Autowired
     private SessionFactory sessionFactory;
 
-    private Session getCurrentSession() {
+    protected Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 
@@ -28,8 +28,5 @@ public class AbstractCrudDao<E> implements CrudDao<E> {
         getCurrentSession().delete(entity);
     }
 
-    @Override
-    public void getById(Long id) {
-        getCurrentSession().get(Product.class, id);
-    }
+
 }

@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+
+    <script>
+        var product={name:"fgjhh"};
+        var j=JSON.stringify(product);
+        console.log(j);
+        function f(){
+            $.ajax({
+                url: "product/add",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data:
+                    JSON.stringify(product)
+                ,
+                cache: false,
+                type: "post",
+                success: function(response) {
+                   console.log(response);
+                },
+                error: function(xhr) {
+                    console.log(xhr.status);
+                }
+            });
+        }
+    </script>
     <title>Title</title>
 </head>
 <body>
 index
+<button onclick="f()">ghj</button>
 </body>
 </html>

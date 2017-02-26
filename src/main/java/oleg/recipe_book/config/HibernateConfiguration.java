@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -21,6 +22,7 @@ import java.util.Properties;
  * Created by Oleg on 19.02.2017.
  */
 @Configuration
+@ComponentScan(basePackages = {"oleg"})
 @EnableTransactionManagement
 @PropertySource(value = {"classpath:hibernate.properties"})
 public class HibernateConfiguration {
@@ -54,13 +56,13 @@ public class HibernateConfiguration {
      Properties getHibernateProperties(){
         Properties properties=new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
+//        properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         return properties;
     }
 
     @Bean
     @Autowired
-     HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
+     public HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
         return txManager;

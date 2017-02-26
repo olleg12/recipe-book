@@ -1,5 +1,7 @@
 package oleg.recipe_book.config;
 
+import oleg.recipe_book.dao.ProductDao;
+import oleg.recipe_book.dao.hibernate.ProductDaoImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,9 +25,9 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    ViewResolver viewResolver(){
-        InternalResourceViewResolver viewResolver=new InternalResourceViewResolver();
-        viewResolver.setPrefix("recipe/recipe-book/src/");
+    ViewResolver viewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/views/");
         return viewResolver;
     }
 }
