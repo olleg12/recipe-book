@@ -18,6 +18,30 @@ public class User {
     private long id;
     private String login;
     private String password;
+
+    public User(){}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != user.id) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        return recipes != null ? recipes.equals(user.recipes) : user.recipes == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (recipes != null ? recipes.hashCode() : 0);
+        return result;
+    }
+
     @ManyToMany
     private List<Recipe> recipes;
 

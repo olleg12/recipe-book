@@ -15,13 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Oleg on 19.02.2017.
  */
 @RestController
-@RequestMapping(value = "recipe")
+@RequestMapping(value = "/recipe")
 public class RecipeController {
     @Autowired
     RecipeService recipeService;
-    @RequestMapping(value = "/add",method = RequestMethod.POST,produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-    private ResponseEntity<Recipe> addRecipe(@RequestBody Recipe recipe){
-           recipeService.add(recipe);
-           return new ResponseEntity<>(recipe, HttpStatus.CREATED);
+
+    @RequestMapping(method = RequestMethod.POST,produces = "application/json")
+    public ResponseEntity<Recipe> addRecipe(@RequestBody Recipe recipe){
+//           recipeService.add(recipe);
+//           return new ResponseEntity<>(recipe, HttpStatus.CREATED);
+        System.out.println("Myerror");
+        System.out.println(recipe);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

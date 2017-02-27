@@ -13,7 +13,7 @@
         console.log(j);
         function f(){
             $.ajax({
-                url: "product/add",
+                url: "product/",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data:
@@ -29,11 +29,35 @@
                 }
             });
         }
+       var user={login:"hgg",password:"dfhdf",recipes:[]};
+        function f1(){
+            $.ajax({
+                url: "user/",
+//                headers: {
+//                    'Accept': 'application/json',
+//                    'Content-Type': 'application/json'
+//                },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data:
+                    JSON.stringify(user)
+                ,
+                cache: false,
+                type: "post",
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr) {
+                    console.log(xhr.status);
+                }
+            });
+        }
     </script>
     <title>Title</title>
 </head>
 <body>
 index
-<button onclick="f()">ghj</button>
+<button onclick="f()">add product</button>
+<button onclick="f1()">add user</button>
 </body>
 </html>

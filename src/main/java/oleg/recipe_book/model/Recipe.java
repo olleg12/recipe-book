@@ -16,8 +16,8 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  long id;
     private String name;
-    @ElementCollection
-    private Map<Product,Integer> ingredients;
+//    @ElementCollection
+//    private Map<Product,Integer> ingredients;
 
     public long getId() {
         return id;
@@ -25,6 +25,9 @@ public class Recipe {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Recipe() {
     }
 
     public String getName() {
@@ -35,11 +38,11 @@ public class Recipe {
         this.name = name;
     }
 
-    public Map<Product, Integer> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(Map<Product, Integer> ingredients) {
-        this.ingredients = ingredients;
-    }
+//    public Map<Product, Integer> getIngredients() {
+//        return ingredients;
+//    }
+//
+//    public void setIngredients(Map<Product, Integer> ingredients) {
+//        this.ingredients = ingredients;
+//    }
 }
