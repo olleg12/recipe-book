@@ -29,8 +29,9 @@
                 }
             });
         }
-       var user={login:"hgg",password:"dfhdf",recipes:[]};
+       var user={login:"hgg",password:"dfhdf",recipes:[{name:"recipe",ingredients:{"cheese":300}}]};
         function f1(){
+            console.log(user);
             $.ajax({
                 url: "user/",
 //                headers: {

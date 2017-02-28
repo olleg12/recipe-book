@@ -1,8 +1,13 @@
 package oleg.recipe_book.model;
 
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,8 +21,9 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  long id;
     private String name;
-//    @ElementCollection
-//    private Map<Product,Integer> ingredients;
+    @ElementCollection
+    @Cascade(CascadeType.ALL)
+    private Map<String,Integer> ingredients;
 
     public long getId() {
         return id;
@@ -38,11 +44,11 @@ public class Recipe {
         this.name = name;
     }
 
-//    public Map<Product, Integer> getIngredients() {
-//        return ingredients;
-//    }
-//
-//    public void setIngredients(Map<Product, Integer> ingredients) {
-//        this.ingredients = ingredients;
-//    }
+    public Map<String, Integer> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Map<String, Integer> ingredients) {
+        this.ingredients = ingredients;
+    }
 }
